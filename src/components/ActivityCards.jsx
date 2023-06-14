@@ -1,22 +1,26 @@
-import work from '../assets/images/icon-work.svg';
-import ell from '../assets/images/icon-ellipsis.svg';
+import ellipsis from '../assets/images/icon-ellipsis.svg';
 
-const ActivityCards = () => {
+const ActivityCards = ({ activity }) => {
+  const { title, img, timeframe } = activity;
+
   return (
-    <div className='bg-lightRedWork rounded-xl overflow-hidden'>
+    <div
+      className='bg-lightRedWork rounded-xl overflow-hidden [&:nth-of-type(3)]:bg-softBlue [&:nth-of-type(4)]:bg-lightRedStudy [&:nth-of-type(5)]:bg-limeGreen
+    [&:nth-of-type(6)]:bg-VioletSocial last-of-type:bg-softOrange '
+    >
       <div className='relative h-10 overflow-hidden'>
-        <img src={work} className='absolute -top-3 right-3 ' />
+        <img src={img} className='absolute -top-1 right-3 w-13  ' />
       </div>
       <div
-        className='bg-darkBlue rounded-xl z-10 flex items-center justify-between
+        className='bg-darkBlue rounded-xl flex flex-col
       px-5 py-6'
       >
-        <div className='flex flex-col gap-0.5'>
-          <p className='font-medium'>Work</p>
-          <p className='text-3xl font-light'>32hrs</p>
+        <div className='flex justify-between items-center'>
+          <p className='font-medium'>{title}</p>
+          <img src={ellipsis} />
         </div>
-        <div className='flex flex-col gap-5 '>
-          <img src={ell} className='self-end' />
+        <div className='flex gap-5 justify-between items-center '>
+          <p className='text-3xl font-light'>32hrs</p>
           <p className='font-light text-paleBlue text-sm'>Last Week - 36hrs</p>
         </div>
       </div>
