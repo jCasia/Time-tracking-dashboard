@@ -17,7 +17,7 @@ const Profile = () => {
       </div>
       <div className='flex justify-around p-4 text-sm'>
         {buttonLabels.map((item, index) => {
-          return <Button label={item} key={index} />;
+          return <Button label={item} key={index} id={item} />;
         })}
       </div>
     </div>

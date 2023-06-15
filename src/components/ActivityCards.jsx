@@ -1,7 +1,26 @@
+import { useGlobalContext } from '../context';
 import ellipsis from '../assets/images/icon-ellipsis.svg';
 
-const ActivityCards = ({ activity }) => {
-  const { title, img, timeframe } = activity;
+import work from '../assets/images/icon-work.svg';
+import play from '../assets/images/icon-play.svg';
+import study from '../assets/images/icon-study.svg';
+import exercise from '../assets/images/icon-exercise.svg';
+import social from '../assets/images/icon-social.svg';
+import selfCare from '../assets/images/icon-self-care.svg';
+
+const ActivityCards = ({ activity, id }) => {
+  const { daily, weekly } = useGlobalContext();
+  const {
+    title,
+    img,
+    timeframes: {
+      daily: { current: dailyCurrent, previous: dailyPrevious },
+      weekly: { current: weekCurrent, previous: weekPrevious },
+      monthly: { current: monthCurrent, previous: monthPrevious },
+    },
+  } = activity;
+
+  const images = [work, play, study, exercise, social, selfCare];
 
   return (
     <div
@@ -9,7 +28,7 @@ const ActivityCards = ({ activity }) => {
     [&:nth-of-type(6)]:bg-VioletSocial last-of-type:bg-softOrange '
     >
       <div className='relative h-10 overflow-hidden'>
-        <img src={img} className='absolute -top-1 right-3 w-13  ' />
+        <img src={images[id]} className='absolute -top-1 right-3 w-13  ' />
       </div>
       <div
         className='bg-darkBlue rounded-xl flex flex-col
@@ -20,8 +39,14 @@ const ActivityCards = ({ activity }) => {
           <img src={ellipsis} />
         </div>
         <div className='flex gap-5 justify-between items-center '>
-          <p className='text-3xl font-light'>32hrs</p>
-          <p className='font-light text-paleBlue text-sm'>Last Week - 36hrs</p>
+          <p className='text-3xl font-light'>{`${
+            daily ? dailyCurrent : weekly ? weekCurrent : monthCurrent
+          } hrs`}</p>
+          <p className='font-light text-paleBlue text-sm'>
+            {`Last Week - ${
+              daily ? dailyPrevious : weekly ? weekPrevious : monthPrevious
+            } hrs`}
+          </p>
         </div>
       </div>
     </div>
