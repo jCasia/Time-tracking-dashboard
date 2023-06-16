@@ -8,7 +8,7 @@ function App() {
 
   return (
     <main className='max-w-full min-h-screen bg-veryDarkBlue text-white font-Rubik '>
-      <div className='flex flex-col gap-6 justify-center item-center px-6 py-16'>
+      <div className='flex flex-col gap-6 justify-center item-center px-6 py-16 tablet:grid tablet:grid-rows-4 tablet:grid-cols-2 tabletl:grid-rows-3 tabletl:grid-cols-3'>
         <Profile />
         {data.map((item, index) => {
           return <ActivityCards key={index} activity={item} id={index} />;

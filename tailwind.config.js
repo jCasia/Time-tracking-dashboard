@@ -20,6 +20,13 @@ export default {
     fontFamily: {
       Rubik: ['Rubik', 'sans-serif'],
     },
+    screens: {
+      tablet: '475px',
+      tabletm: '585px',
+      tabletl: '675px',
+      laptopsm: '800px',
+      laptop: '1000px',
+    },
   },
 
   plugins: [],

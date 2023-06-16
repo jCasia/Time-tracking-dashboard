@@ -29,7 +29,9 @@ const Button = ({ label, id }) => {
   return (
     <button
       type='button'
-      className={`text-desaturatedBlue ${isActive && 'text-white'}`}
+      className={`text-desaturatedBlue ${
+        isActive && 'text-white'
+      } tablet:text-lg`}
       onClick={() => toggleSingle(id)}
     >
       {label}

@@ -1,5 +1,6 @@
 import { useGlobalContext } from '../context';
 import ellipsis from '../assets/images/icon-ellipsis.svg';
+import { motion } from 'framer-motion';
 
 import work from '../assets/images/icon-work.svg';
 import play from '../assets/images/icon-play.svg';
@@ -23,34 +24,44 @@ const ActivityCards = ({ activity, id }) => {
   const images = [work, play, study, exercise, social, selfCare];
 
   return (
-    <div
-      className='bg-lightRedWork rounded-xl overflow-hidden [&:nth-of-type(3)]:bg-softBlue [&:nth-of-type(4)]:bg-lightRedStudy [&:nth-of-type(5)]:bg-limeGreen
-    [&:nth-of-type(6)]:bg-VioletSocial last-of-type:bg-softOrange '
+    <motion.div
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{
+        duration: 2,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+      className='bg-lightRedWork rounded-xl overflow-hidden [&:nth-of-type(3)]:bg-softBlue  [&:nth-of-type(4)]:bg-lightRedStudy [&:nth-of-type(5)]:bg-limeGreen
+    [&:nth-of-type(6)]:bg-VioletSocial last-of-type:bg-softOrange flex flex-col '
     >
-      <div className='relative h-10 overflow-hidden'>
+      <div className='relative h-10 overflow-hidden '>
         <img src={images[id]} className='absolute -top-1 right-3 w-13  ' />
       </div>
       <div
-        className='bg-darkBlue rounded-xl flex flex-col
-      px-5 py-6'
+        className='bg-darkBlue rounded-xl flex flex-col tablet:justify-between
+      px-5 py-6  hover:bg-desaturatedBlue transition ease-linear duration-500 tablet:flex-1 '
       >
-        <div className='flex justify-between items-center'>
-          <p className='font-medium'>{title}</p>
-          <img src={ellipsis} />
+        <div className='flex justify-between items-center '>
+          <p className='font-medium tablet:text-lg tabletm:text-2xl tabletl:text-lg laptopsm:text-xl'>
+            {title}
+          </p>
+          <img src={ellipsis} className='cursor-pointer' />
         </div>
-        <div className='flex gap-5 justify-between items-center '>
-          <p className='text-3xl font-light'>{`${
+        <div className='flex gap-5 justify-between items-center tablet:flex-col tablet:gap-2 tablet:items-start tabletl:gap-1'>
+          <p className='text-3xl font-light tablet:text-5xl tabletl:text-4xl laptopsm:text-5xl '>{`${
             daily ? dailyCurrent : weekly ? weekCurrent : monthCurrent
           } hrs`}</p>
-          <p className='font-light text-paleBlue text-sm'>
+          <p className='font-light text-paleBlue text-sm tablet:text-base '>
             {`Last Week - ${
               daily ? dailyPrevious : weekly ? weekPrevious : monthPrevious
             } hrs`}
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export default ActivityCards;
+
+// [&:nth-of-type(4)]:tablet:bg-paleBlue
