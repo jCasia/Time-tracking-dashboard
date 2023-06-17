@@ -33,6 +33,7 @@ const Button = ({ label, id }) => {
         isActive && 'text-white'
       } tablet:text-lg`}
       onClick={() => toggleSingle(id)}
+      aria-label={label}
     >
       {label}
     </button>

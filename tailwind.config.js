@@ -25,7 +25,8 @@ export default {
       tabletm: '585px',
       tabletl: '675px',
       laptopsm: '800px',
-      laptop: '1000px',
+      laptopm: '990px',
+      laptop: '1100px',
     },
   },
 
