@@ -10,7 +10,7 @@ import social from '../assets/images/icon-social.svg';
 import selfCare from '../assets/images/icon-self-care.svg';
 
 const ActivityCards = ({ activity, id }) => {
-  const { daily, weekly } = useGlobalContext();
+  const { daily, weekly, monthly } = useGlobalContext();
   const {
     title,
     img,
@@ -57,7 +57,9 @@ const ActivityCards = ({ activity, id }) => {
             daily ? dailyCurrent : weekly ? weekCurrent : monthCurrent
           }hrs`}</p>
           <p className='font-light text-paleBlue text-sm tablet:text-base '>
-            {`Last Week - ${
+            {`${
+              weekly ? 'Last Week' : monthly ? 'Last Month' : 'Yesterday'
+            } - ${
               daily ? dailyPrevious : weekly ? weekPrevious : monthPrevious
             }hrs`}
           </p>
